@@ -1,5 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
+#include <iostream>
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
@@ -18,9 +20,12 @@ private:
     sf::RenderWindow* window;
     sf::VideoMode videoMode;
     sf::Event ev;
+    //Game Objects
+    sf::RectangleShape enemy;
     //Private Function
     void inatializeVariables();
     void initWindow();
+    void initEnemies();
 public:
     //Constructors and Destructors
     Game(/* args */);

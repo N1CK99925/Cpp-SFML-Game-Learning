@@ -1,4 +1,5 @@
 #include "src/Game.h"
+
 //private functions
 void Game::inatializeVariables()
 {
@@ -7,22 +8,32 @@ void Game::inatializeVariables()
 
 void Game::initWindow()
 {
-    this->videoMode.height = 800;
-    this->videoMode.width = 600;
+    this->videoMode.height = 600;
+    this->videoMode.width = 800;
     // this->videoMode.getDesktopMode;
     this ->window = new sf::RenderWindow(this->videoMode,"YouRWeapon",sf::Style::Titlebar |sf::Style::Close);
+    this->window->setFramerateLimit(60); //FPS Limit
 }
-//Constructors // Destructors
+void Game::initEnemies()
+{
+    this->enemy.setPosition(10.f,10.f);
+    this->enemy.setSize(sf::Vector2f(50.f,50.f));
+    this->enemy.setFillColor(sf::Color::Cyan);
+    this->enemy.setOutlineColor(sf::Color::Green);
+    this->enemy.setOutlineThickness(1.f);
+}
+// Constructors // Destructors
 Game::Game()
 {
     //Put init variable first as they have window nullptr and initWindow has a Variable assigned
     this->inatializeVariables();
     this->initWindow();
-}
+    this->initEnemies();
+} 
 
 Game::~Game()
 {
-
+    
     delete this->window;
 }
 // Accessors
@@ -54,6 +65,9 @@ void Game::pollEvents()
 void Game::update()
 {   
     this->pollEvents();
+    //Update Mouse postitons
+    // std::cout << "Mouse Position: " << sf::Mouse::getPosition().x << " " << sf::Mouse::getPosition().y<< std::endl;
+    std::cout << "Mouse Position: " << sf::Mouse::getPosition(*this->window).x << " " << sf::Mouse::getPosition(*this->window).y<< std::endl;
 }
 void Game::render()
 {   
@@ -67,7 +81,9 @@ void Game::render()
 
 
 
-    this->window->clear(sf::Color(255,0,0,255));
+    this->window->clear();
+
     //Draw Game Objects 
+    this->window->draw(this->enemy);
     this->window->display();
 }

@@ -23,6 +23,7 @@ private:
     sf::Event ev;
     //Mouse Positions
     sf::Vector2i mousePosWindow;
+    sf::Vector2f mousePosview;
     
     //Game Logic
     float enemySpawnTimer;

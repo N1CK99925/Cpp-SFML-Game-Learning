@@ -9,7 +9,8 @@ int main( ) {
    std::srand(static_cast<unsigned>(time(NULL)));
    Game game;
    //Game Loop
-   while (game.running())
+   // && !game.getEndGame() - use this to instantl;y colse the window 
+   while (game.running()  && !game.getEndGame())
    {
     //event polling gonna be inside the game itself
    

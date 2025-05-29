@@ -26,10 +26,13 @@ private:
     sf::Vector2f mousePosview;
     
     //Game Logic
+    bool endGame;
+    unsigned points;// Gives positive values, no negiteive values or it'll crash    
+    int health;
     float enemySpawnTimer;
     float enemySpawnTimerMax;
     int maxEnemies;
-    int points;
+    bool mouseHeld;
 
     
     //Game Objects
@@ -47,6 +50,7 @@ public:
 
     //Accessors
     const bool running() const;
+    const bool getEndGame() const;
 
     //Functions
     void spawnEnemy();

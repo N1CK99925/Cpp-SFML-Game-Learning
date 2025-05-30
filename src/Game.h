@@ -2,12 +2,13 @@
 #define GAME_H
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <sstream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
-#include <ctime>
 /*
 Class that acts as the game engine
 Wrapper Class 
@@ -24,6 +25,12 @@ private:
     //Mouse Positions
     sf::Vector2i mousePosWindow;
     sf::Vector2f mousePosview;
+
+    //Resources
+    sf::Font font;
+
+    //Text  handles text on my ui
+    sf::Text uiText;
     
     //Game Logic
     bool endGame;
@@ -42,6 +49,8 @@ private:
     //Private Function
     void inatializeVariables();
     void initWindow();
+    void initFonts();
+    void initTexts();
     void initEnemies();
 public:
     //Constructors and Destructors
@@ -56,9 +65,12 @@ public:
     void spawnEnemy();
     void pollEvents();
     void updateMousePositions();
+    void updateText();
     void updateEnemies();
     void update();
-    void renderEnemies();
+
+    void renderText(sf::RenderTarget& target);
+    void renderEnemies(sf::RenderTarget& target);
     void render();
 };
 #endif

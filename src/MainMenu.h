@@ -12,7 +12,7 @@ class MainMenu
     MainMenu(float width, float height);
     void draw(RenderWindow& Window);
     void MoveUp();
-    void MoveDOwn();
+    void MoveDown();
 
     int MainMenuPressed(){
         return MainMenuSelected;
